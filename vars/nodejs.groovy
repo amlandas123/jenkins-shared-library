@@ -8,7 +8,9 @@ def lintchecks(){
 
 def call(){
         pipeline{
-                agent any
+                agent{
+                        label "node"
+                }
                 stages{
                     stage("lintchecks"){
                         steps{
