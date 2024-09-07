@@ -16,9 +16,14 @@ def call(){
                         steps{
                                 script {
                                      lintchecks()           
+                                       }
+                                }
+                
+                        }
+                    stage("Static code analysis"){
+                        sh "echo static code analysis in process"
+                    }    
                 }
-            }
-        }
-        }
+
 }
 }               
