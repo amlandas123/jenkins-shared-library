@@ -21,7 +21,10 @@ def call(){
                 
                         }
                     stage("Static code analysis"){
-                        sh "echo static code analysis in process"
+                        steps{
+                                sh "echo static code analysis in process"
+                        }
+                        
                     }    
                 }
 
