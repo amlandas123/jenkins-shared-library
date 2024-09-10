@@ -5,6 +5,7 @@ def lintchecks(){
         sh "echo *** Lint check completed for ${component} ***"
 }
 
+
 def call(){
         pipeline{
                 agent{
