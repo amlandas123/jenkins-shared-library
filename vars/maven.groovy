@@ -5,11 +5,20 @@ def lintchecks(){
         sh "echo *** Lint check completed for ${component} ***"
 }
 
+def sonarchecks(){
+        sh '''
+        sonar-scanner -Dsonar.host.url=http://172.31.33.165:9000 -Dsonar.sources=. -Dsonar.projectKey=${component} -Dsonar.login=admin -Dsonar.password=password
+
+        '''
+}
 
 def call(){
         pipeline{
                 agent{
                         label "node"
+                }
+                tools{
+                        maven 'maven396'
                 }
                 stages{
                     stage("lintchecks"){
@@ -20,13 +29,34 @@ def call(){
                                 }
                 
                         }
+                    stage("compile code"){
+                        steps{
+                                sh "mvn clean compile"
+                                sh "ls -ltr target/"
+                        }
+                    }    
                     stage("Static code analysis"){
                         steps{
-                                sh "echo static code analysis in process"
+                                script {
+                                        sonarchecks()
+                                }
                         }
                         
-                    }    
+                    }
+                    stage("get the sonar result"){
+                        steps{
+                                sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > gates.sh"
+                                sh "sudo bash gates.sh admin password ${sonar_url} ${component}"
+                        }
+                    }
+                    stage("unit code testing"){
+                        steps{
+                                sh "echo Testing is in progress"
+                        }
+                        
+                    }        
                 }
+
 
 }
 }               
