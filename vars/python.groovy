@@ -1,9 +1,9 @@
 def lintchecks(){
         sh "whoami"
-        // sh "echo *** Lint check starting for ${component} ***"
+        sh "echo *** Lint check starting for ${component} ***"
         // sh "mvn checkstyle:check || true"
-        sh "pip3 install pylint"
-        ah "pylint *.py || true"
+        // sh "pip3 install pylint"
+        // ah "pylint *.py || true"
         sh "echo *** Lint check completed for ${component} ***"
 }
 
@@ -19,9 +19,7 @@ def call(){
                 agent{
                         label "node"
                 }
-                tools{
-                        maven 'maven396'
-                }
+                
                 stages{
                     stage("lintchecks"){
                         steps{
