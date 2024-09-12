@@ -15,7 +15,7 @@ def call(){
                 }
                 environment{
                         SONAR_CRED = credentials('sonar_cred')    
-                }                                                        #CREDENTIALS ARE IN JENKINS
+                }                                                        
                 stages{
                     stage("lintchecks"){
                         steps{
