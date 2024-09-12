@@ -11,7 +11,7 @@ def call(){
                         label "node"
                 }
                 environment{
-                        sonar_cred = credentials{'sonar_cred'}
+                        SONAR_CRED = credentials{'sonar_cred'}
                 }
                 tools{
                         maven 'maven396'     #install the maven tools in jenkins with same name maven396

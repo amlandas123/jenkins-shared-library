@@ -13,6 +13,9 @@ def call(){
                 agent{
                         label "node"
                 }
+                environment{
+                        SONAR_CRED = credentials{'sonar_cred'}
+                }
                 stages{
                     stage("lintchecks"){
                         steps{
