@@ -14,7 +14,7 @@ def call(){
                         label "node"
                 }
                 environment{
-                        SONAR_CRED = credentials{'sonar_cred'}
+                        SONAR_CRED = credentials('sonar_cred')
                 }
                 stages{
                     stage("lintchecks"){
