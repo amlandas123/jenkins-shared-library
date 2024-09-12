@@ -14,8 +14,8 @@ def call(){
                         label "node"
                 }
                 environment{
-                        SONAR_CRED = credentials('sonar_cred')
-                }
+                        SONAR_CRED = credentials('sonar_cred')    
+                }                                                        #CREDENTIALS ARE IN JENKINS
                 stages{
                     stage("lintchecks"){
                         steps{
