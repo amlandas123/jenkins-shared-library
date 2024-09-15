@@ -51,13 +51,11 @@ def call(){
                                 stage("Unit testing"){
                                         steps{
                                                 sh "echo Download-1 is in progress"
-                                                sh "sleep 120"
                                        }
                                 }                   
                                 stage("Integration testing"){
                                         steps{
                                                 sh "echo Download-2 is in progress"
-                                                sh "sleep 120"
                                         }
 
                                 }
