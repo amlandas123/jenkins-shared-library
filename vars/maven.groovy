@@ -14,7 +14,7 @@ def call(){
                         SONAR_CRED = credentials('sonar_cred')
                 }
                 tools{
-                        maven 'maven396'     #install the maven tools in jenkins with same name maven396
+                        maven 'maven396'     
                 }
                 stages{
                     stage("lintchecks"){
