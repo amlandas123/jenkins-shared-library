@@ -40,12 +40,39 @@ def call(){
                                 sh "sudo bash gates.sh admin password ${sonar_url} ${component}"
                         }
                     }
-                    stage("unit code testing"){
+                    stage("Test Cases"){
+                        parallel{
+                                stage("Unit testing"){
+                                        steps{
+                                                sh "echo Download-1 is in progress"
+                                       }
+                                }                   
+                                stage("Integration testing"){
+                                        steps{
+                                                sh "echo Download-2 is in progress"
+                                        }
+
+                                }
+                                stage("Funtional Testing"){
+                                        steps{
+                                                sh "echo Download-3 is in progress"
+                                        }
+
+                                }
+                        }             
+                }
+                stage("Prepare artifacts"){
                         steps{
-                                sh "echo Testing is in progress"
+                                sh "echo creating artifacts"
                         }
-                        
-                    }        
+
+                }
+                stage("Uploading artifacts"){
+                        steps{
+                                sh "echo uploading artifacts"
+                        }
+
+                } 
                 }
 
 
