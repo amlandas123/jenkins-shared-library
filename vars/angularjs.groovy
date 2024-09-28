@@ -63,13 +63,13 @@ def call(){
                 }
                 stage("Prepare artifacts"){
                         steps{
-                                sh "echo creating artifacts"
+                                sh "echo creating artifacts"   //implements only when run by the tags not from branches
                         }
 
                 }
                 stage("Uploading artifacts"){
                         steps{
-                                sh "echo uploading artifacts"
+                                sh "echo uploading artifacts" //implements only when run by the tags not from branches
                         }
 
                 } 
